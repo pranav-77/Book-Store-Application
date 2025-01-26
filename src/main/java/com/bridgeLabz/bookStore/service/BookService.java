@@ -42,9 +42,7 @@ public class BookService {
     public List<BookResponse> getAllBooks() {
         return bookRepo.findAll()
                 .stream()
-                .map(book-> {
-                    return bookMapper.mapToBookResponse(book);
-                }).toList();
+                .map(book-> bookMapper.mapToBookResponse(book)).toList();
     }
 
     public BookResponse changeBookPrice(int bookId, double price) {
