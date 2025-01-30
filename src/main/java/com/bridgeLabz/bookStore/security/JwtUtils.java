@@ -43,7 +43,7 @@ public class JwtUtils {
     }
 
     public String extractUsernameFromToken(String token) {
-        return extractClaim(token,claim->claim.getSubject());
+        return extractClaim(token, Claims::getSubject);
     }
     public <T> T extractClaim(String token, Function<Claims,T> claimsResolver) {
         Claims claims = extractAllClaims(token);
@@ -66,7 +66,7 @@ public class JwtUtils {
     }
 
     private Date extractExpiration(String token) {
-        return extractClaim(token, claim->claim.getExpiration());
+        return extractClaim(token, Claims::getExpiration);
     }
 
     public Long extractUserIdFromToken(String token) {
